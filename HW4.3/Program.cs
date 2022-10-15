@@ -5,7 +5,7 @@
             int k = 0, l = 0;
             Random rnd = new Random();
  
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < n; i++)
             {
                 arr[i] = rnd.Next(100, 999);
                 Console.Write("{0} ", arr[i]);
