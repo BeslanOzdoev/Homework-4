@@ -1,29 +1,36 @@
-﻿// Задать массив из 12 элементов, заполненных числами из [0,9]. Найти сумму положительных/отрицательных элементов массива
+﻿//Задать массив из 12 элементов, заполненных числами из [0,9]. Найти сумму положительных/отрицательных элементов массива
+void FillArray(int[] massiv)
+{
+    Random Znach = new Random();
+    for (int ind = 0; ind < massiv.Length; ind++)
+    {
+        massiv[ind] = Znach.Next(0, 9);
+    }
+}
+void PrintArray(int[] massiv)
+{
+    foreach (var item in massiv)
+    {
+        Console.Write($"{item} ");
+    }
+}
+int[] Array = new int[12];
+FillArray(Array);
+PrintArray(Array);
+Console.WriteLine(" ");
+int summa_polojitelnih = 0;
+int summa_otricatelnih = 0;
+for (int ind = 0; ind < Array.Length; ind++)
+{
+    if (Array[ind] < 0)
+    {
+        summa_otricatelnih += Array[ind];
+    }
+    if (Array[ind] > 0)
+    {
+        summa_polojitelnih += Array[ind];
+    }
+};
+Console.WriteLine($"Сумма положительных чисел {summa_polojitelnih}");
+Console.WriteLine($"Сумма отрицательных чисел {-summa_otricatelnih}");
 
-            int[] arr = new int[12];
-            int k = 0, sum1 = 0;
-            int l = 0, sum2 = 0;
-            Random rnd = new Random();
- 
-            for (int i = 0; i < 12; i++)
-            {
-                arr[i] = rnd.Next(-0, 9);
-                Console.Write("{0} ", arr[i]);
-            }
-
-            foreach(int element in arr)
-            {
-                if (element > 0)
-                {
-                    k++;
-                    sum1 += element;
-                }   
-     
-            if (element < 0)
-            {
-                l++;
-                sum2 += element;
-            }
-            }
-            Console.WriteLine("Количество положительных элементов {0}, сумма положительных элементов {1}", k, sum1);
-            Console.WriteLine("Количество отрицательных элементов {0}, сумма отрицательных элементов {1}", l, sum2);
