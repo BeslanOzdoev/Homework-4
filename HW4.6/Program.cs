@@ -1,34 +1,31 @@
 ﻿// Найти произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
-
-
-void Array_Input(int[] arr, int min, int max)
+void Zapolnenie_Massiva(int[] massiv, int min, int max)
 {
-    Random rnd = new Random();
-    for (int i = 0; i < arr.Length; i++)
-            {
-                arr[i] = rnd.Next(min, max);
-            }
-}
-void Array_Output(int[] arr)
-{
-    foreach (var element in arr)
+    Random Znach = new Random();
+    for (int ind = 0; ind < massiv.Length; ind++)
     {
-        Console.Write($"{element} ");
+        massiv[ind] = Znach.Next(min, max);
     }
 }
-Console.Write("Min: ");
-int Min = int.Parse(Console.ReadLine() ?? "0" );
-Console.Write("Max: ");
-int Max = int.Parse(Console.ReadLine() ?? "0" );
-Console.Write("Length of Array: ");
-int n = int.Parse(Console.ReadLine() ?? "0" );
-int[] Array =  new int[n];
-Array_Input(max: Max + 1, min: Min, arr: Array);
-Array_Output(Array);
-Console.WriteLine("");
-for (int i = 0; i <= Array.Length/2; i++)
+void Pechat_Massiva(int[] massiv)
 {
-    if (((Array.Length % 2) == 1) && (i == Array.Length / 2)) Console.WriteLine($"Произведение пары чисел: {Array[i] * Array[i]}");
-    if (((Array.Length % 2) == 0) && (i == Array.Length / 2)) Console.WriteLine($"-");
+    foreach (var item in massiv)
+    {
+        Console.Write($"{item} ");
+    }
+}
+Console.Write("Введите минимальное число для значений массива:");
+int Min = int.Parse(Console.ReadLine() ?? "0");
+Console.Write("Введите максимальное число для значений массива:");
+int Max = int.Parse(Console.ReadLine() ?? "0");
+Console.Write("Введите длинну массива:");
+int dlinna = int.Parse(Console.ReadLine() ?? "0");
+int[] Array = new int[dlinna];
+Zapolnenie_Massiva(max: Max + 1, min: Min, massiv: Array);
+Pechat_Massiva(Array);
+Console.WriteLine(" ");
+for (int i = 0; i <= Array.Length / 2; i++)
+{
+    if (((Array.Length % 2) == 1) && (i == Array.Length / 2)) Console.WriteLine($"Массив имеет нечётное количество элементов у {Array[Array.Length / 2]} нет пары");
     else Console.WriteLine($"Произведение пары чисел: {Array[i] * Array[Array.Length -1 -i]}");
 }
