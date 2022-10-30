@@ -1,23 +1,34 @@
 ﻿// В одномерном массиве из 123 чисел найти количество элементов из отрезка [10,99]
-
-int n = 123;
-            int[] arr = new int[n];
-            int k = 0;
-            Random rnd = new Random();
- 
-            for (int i = 0; i < n; i++)
-            {
-                arr[i] = rnd.Next(0, 999);
-                Console.Write("{0} ", arr[i]);
-            }
-
-            foreach(int element in arr)
-            {
-                if (element >= 10 && element <= 99)
-                {
-                    k++;
-                }   
-
-            }
-            Console.WriteLine();
-            Console.WriteLine("Количество элементов из отрезка [10,99] = {0}", k);
+void Zapolnenie_Massiva(int[] massiv, int min, int max)
+{
+    Random Znach = new Random();
+    for (int ind = 0; ind < massiv.Length; ind++)
+    {
+        massiv[ind] = Znach.Next(min, max);
+    }
+}
+void Pechat_Massiva(int[] massiv)
+{
+    foreach (var item in massiv)
+    {
+        Console.Write($"{item} ");
+    }
+}
+int Kolichestvo_chisel(int[] massiv)
+{
+    int kolichestvo = 0;
+        for(int i =0; i<massiv.Length;i++)
+        {
+            if (massiv[i]>=10 && massiv[i]<=99) kolichestvo++;
+        } 
+    return kolichestvo;
+}
+Console.Write("Введите минимальное число для значений массива:");
+int Min = int.Parse(Console.ReadLine()??"0");
+Console.Write("Введите максимальное число для значений массива:");
+int Max = int.Parse(Console.ReadLine()??"0");
+int[] Array = new int[123];
+Zapolnenie_Massiva(Array, Min, Max+1);
+Pechat_Massiva(Array);
+Console.WriteLine("");
+Console.WriteLine($"Количество элементов в диапазоне [10,99]: {Kolichestvo_chisel(Array)}");
